@@ -58,32 +58,3 @@ catch {
     Write-Host "ERROR: $($_.Exception.Message)" -ForegroundColor Red
     exit 1
 }
-
-# GitHub synchronization
-Set-Location $PSScriptRoot
-
-git add schema.sql
-
-git diff --cached --quiet
-
-if ($LASTEXITCODE -eq 0) {
-    Write-Host "No database changes to upload."
-}
-elseif ($LASTEXITCODE -eq 1) {
-    git commit -m "Update SQL database schema"
-
-    if ($LASTEXITCODE -ne 0) {
-        throw "Git commit failed."
-    }
-
-    git push origin main
-
-    if ($LASTEXITCODE -ne 0) {
-        throw "Git push failed."
-    }
-
-    Write-Host "SUCCESS! Database schema pushed to GitHub." -ForegroundColor Green
-}
-else {
-    throw "Git diff failed."
-}
