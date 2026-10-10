@@ -9,3 +9,5 @@ Information System Project
 
 Тексеру: GitHub -> VS Code
 Орындаған: Маутқанов Айәділ
+
+GitHub automatic synchronization test.

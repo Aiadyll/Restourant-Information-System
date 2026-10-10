@@ -1,0 +1,22 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pfx
+
+# Temporary files
+*.log
+*.tmp
+.vs/
+.vscode/
+bin/
+obj/
+build/
+.dart_tool/
+__pycache__/
+
+# Database backups
+*.mdf
+*.ldf
+*.bak
