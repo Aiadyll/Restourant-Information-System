@@ -65,6 +65,7 @@ GO
 CREATE TABLE [dbo].[GitHubSyncTest](
 	[Id] [int] NOT NULL,
 	[TestName] [nvarchar](100) COLLATE Cyrillic_General_CI_AS NULL,
+	[Description] [nvarchar](200) COLLATE Cyrillic_General_CI_AS NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
