@@ -1,30 +1,12 @@
-
-USE master;
-GO
-
-IF DB_ID(N'RestaurantDB_Lab6') IS NOT NULL
-BEGIN
-    ALTER DATABASE RestaurantDB_Lab6
-    SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-
-    DROP DATABASE RestaurantDB_Lab6;
-END;
-GO
-
-CREATE DATABASE RestaurantDB_Lab6;
-GO
-
 USE RestaurantDB_Lab6;
 GO
 
--- 1. Клиенттер
 CREATE TABLE Customers (
     Id INT PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
     Phone NVARCHAR(20) UNIQUE
 );
 
--- 2. Тағамдар
 CREATE TABLE Products (
     Id INT PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
@@ -32,14 +14,12 @@ CREATE TABLE Products (
     Price INT NOT NULL CHECK (Price > 0)
 );
 
--- 3. Қызметкерлер
 CREATE TABLE Employees (
     Id INT PRIMARY KEY,
     Name NVARCHAR(100) NOT NULL,
     Position NVARCHAR(50) NOT NULL
 );
 
--- 4. Тапсырыстар
 CREATE TABLE Orders (
     Id INT PRIMARY KEY,
     CustomerId INT NOT NULL,
@@ -50,7 +30,6 @@ CREATE TABLE Orders (
     FOREIGN KEY (ProductId) REFERENCES Products(Id)
 );
 
--- 5. Төлемдер
 CREATE TABLE Payments (
     Id INT PRIMARY KEY,
     OrderId INT NOT NULL,
@@ -59,7 +38,6 @@ CREATE TABLE Payments (
     FOREIGN KEY (OrderId) REFERENCES Orders(Id)
 );
 
--- Клиенттер: 15 жазба
 INSERT INTO Customers VALUES
 (1, N'Медет', N'87010000001'),
 (2, N'Айдос', N'87010000002'),
@@ -77,7 +55,6 @@ INSERT INTO Customers VALUES
 (14, N'Нұрсұлтан', N'87010000014'),
 (15, N'Жанель', N'87010000015');
 
--- Тағамдар: 15 жазба
 INSERT INTO Products VALUES
 (1, N'Бургер', N'Фастфуд', 2500),
 (2, N'Чизбургер', N'Фастфуд', 2800),
@@ -95,7 +72,6 @@ INSERT INTO Products VALUES
 (14, N'Лимонад', N'Сусын', 1200),
 (15, N'Капучино', N'Сусын', 1300);
 
--- Қызметкерлер: 15 жазба
 INSERT INTO Employees VALUES
 (1, N'Арман', N'Администратор'),
 (2, N'Айдос', N'Аспаз'),
@@ -113,7 +89,6 @@ INSERT INTO Employees VALUES
 (14, N'Алина', N'Даяшы'),
 (15, N'Руслан', N'Аспаз');
 
--- Тапсырыстар: 15 жазба
 INSERT INTO Orders VALUES
 (1, 1, 3, 2, '2026-10-01'),
 (2, 2, 1, 1, '2026-10-01'),
@@ -131,7 +106,6 @@ INSERT INTO Orders VALUES
 (14, 14, 12, 3, '2026-10-07'),
 (15, 15, 15, 2, '2026-10-08');
 
--- Төлемдер: 15 жазба
 INSERT INTO Payments VALUES
 (1, 1, 6400, N'Kaspi'),
 (2, 2, 2500, N'Қолма-қол'),
@@ -149,7 +123,6 @@ INSERT INTO Payments VALUES
 (14, 14, 3000, N'Kaspi'),
 (15, 15, 2600, N'Карта');
 
--- Барлық кестелерді шығару
 SELECT * FROM Customers;
 SELECT * FROM Products;
 SELECT * FROM Employees;
