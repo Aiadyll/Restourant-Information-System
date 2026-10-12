@@ -276,3 +276,6 @@ ALTER TABLE [dbo].[Users]  WITH CHECK ADD  CONSTRAINT [CK_Users_Role] CHECK  (([
 GO
 ALTER TABLE [dbo].[Users] CHECK CONSTRAINT [CK_Users_Role]
 GO
+
+орпавапр
+пвоневн
