@@ -11,5 +11,3 @@ Information System Project
 Орындаған: Маутқанов Айәділ
 
 GitHub automatic synchronization test.
-
-Test 1
